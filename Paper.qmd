@@ -1,0 +1,31 @@
+---
+title: "Prime Minister Tutorial"
+author: "Krishiv Jain"
+thanks: "Code and data are available at: https://github.com/Krishiv-J/STA302-Mini-essay-5a.git"
+date: 2024-02-04
+format: pdf
+number-sections: true
+bibliography: primeminister_references.bib 
+---
+
+```{r}
+#| include: false
+#| warning: false
+#| message: false
+
+library(rvest)
+library(xml2)
+library(tidyverse)
+library(dplyr)
+library(janitor)
+library(knitr)
+```
+
+You can add options to executable code like this 
+
+```{r}
+#| echo: false
+2 * 2
+```
+
+The `echo: false` option disables the printing of code (only output is displayed).
