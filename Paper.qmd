@@ -5,7 +5,7 @@ thanks: "Code and data are available at: https://github.com/Krishiv-J/STA302-Min
 date: 2024-02-04
 format: pdf
 number-sections: true
-bibliography: primeminister_references.bib 
+bibliography: references.bib 
 ---
 
 ```{r}

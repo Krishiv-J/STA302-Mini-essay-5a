@@ -55,3 +55,5 @@ cleaned_data |>
   kable(
     col.names = c("Prime Minister", "Birth year", "Death year", "Age at death")
   )
+
+write_csv(cleaned_data, "cleaned_data.csv")
