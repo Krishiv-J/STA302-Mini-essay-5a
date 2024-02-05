@@ -6,7 +6,7 @@ date: 2024-02-04
 date-format: long
 format: pdf
 number-sections: true
-bibliography: references.bib 
+bibliography: references.bib
 ---
 
 ```{r}
@@ -14,19 +14,69 @@ bibliography: references.bib
 #| warning: false
 #| message: false
 
+library(bibtex)
 library(rvest)
 library(xml2)
 library(tidyverse)
 library(dplyr)
 library(janitor)
 library(knitr)
+library(here)
 ```
 
-You can add options to executable code like this 
+# Introduction
+
+Hello @citetidyverse
+@citervest
 
 ```{r}
 #| echo: false
-2 * 2
+#| include: true
+#| message: false
+
+## Read in the data
+final_data <-
+  read_csv(here("cleaned_data.csv"))
+  show_col_types = FALSE
+```
+
+```{r}
+#| echo: false
+#| include: true
+#| message: false
+#| label: tbl-data
+#| tbl-cap: Sample of Cleaned Data
+
+#Based on: https://tellingstorieswithdata.com/05-static_communication.html#tables 
+final_data |>
+  slice(1:5) |>
+  kable()
+```
+
+
+```{r}
+#| echo: false
+#| include: true
+#| message: false
+#| label: fig-graph
+#| fig-cap: Lifespan of each Indian Prime Minister
+#| fig-pos: H
+final_data |>
+  mutate(
+    still_alive = if_else(is.na(died), "Yes", "No"),
+    died = if_else(is.na(died), as.integer(2023), died)
+  ) |>
+  mutate(name = as_factor(name)) |>
+  ggplot(
+    aes(x = born, xend = died, y = name, yend = name, color = still_alive)
+  ) +
+  geom_segment() +
+  labs(
+    x = "Year of birth", y = "Prime minister", color = "PM is currently alive"
+  ) +
+  theme_minimal() +
+  scale_color_brewer(palette = "Set1") +
+  theme(legend.position = "bottom")
 ```
 
 The `echo: false` option disables the printing of code (only output is displayed).
