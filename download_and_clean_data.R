@@ -45,14 +45,8 @@ cleaned_data <-
   select(-born) |>
   rename(born = birth) |> 
   mutate(across(c(born, died), as.integer)) |> 
-  mutate(Age_at_Death = died - born) |> 
+  mutate("Age at Death" = died - born) |> 
   distinct()
-
-cleaned_data |>
-  head() |>
-  kable(
-    col.names = c("Prime Minister", "Birth year", "Death year", "Age at death")
-  )
 
 write_csv(cleaned_data, "cleaned_data.csv")
 
@@ -61,7 +55,7 @@ cleaned_data |>
     still_alive = if_else(is.na(died), "Yes", "No"),
     died = if_else(is.na(died), as.integer(2023), died)
   ) |>
-  mutate(name = as_factor(name)) |>
+  mutate("name" = as_factor(name)) |>
   ggplot(
     aes(x = born, xend = died, y = name, yend = name, color = still_alive)
   ) +
@@ -72,4 +66,5 @@ cleaned_data |>
   theme_minimal() +
   scale_color_brewer(palette = "Set1") +
   theme(legend.position = "bottom")
+
 

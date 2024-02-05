@@ -24,10 +24,16 @@ library(knitr)
 library(here)
 ```
 
-# Introduction
+# Data Source
 
-Hello @citetidyverse
-@citervest
+The source of the data is Wikipedia. Wikipedia has a list of Prime Ministers for almost every nation, including India. This list includes a variety of metrics, such as their term in office, their political party, and the head of state during their term. Jawaharlal Nehru was the first and longest-serving prime minister. Indira Gandhi was the only woman to hold the position. Manmohan Singh was the first prime minister from a minority religion. The current prime minister is Narendra Modi. The data source can be used to learn about the history of the prime ministers of India. It can also be used to compare and contrast different prime ministers. Additionally, the data source can be used to study the trends in Indian politics. For our purpose, we are concerned with their lifespan. 
+
+# Data Gathering
+
+The data was downloaded, cleaned, and analyzed using the statistical programming language R [@citeR]. The following packages were also used: janitor [@citejanitor], here [@citehere], tidyverse [@citetidyverse], rvest [@citervest], xlm2 [@citex], dplyr [@citedplyr], tibble [@citetibble]. The majority of the code was from Telling Stories with Data [@citetextbook]. 
+
+
+
 
 ```{r}
 #| echo: false
@@ -38,6 +44,7 @@ Hello @citetidyverse
 final_data <-
   read_csv(here("cleaned_data.csv"))
   show_col_types = FALSE
+
 ```
 
 ```{r}
@@ -49,10 +56,9 @@ final_data <-
 
 #Based on: https://tellingstorieswithdata.com/05-static_communication.html#tables 
 final_data |>
-  slice(1:5) |>
+  slice(1:10) |>
   kable()
 ```
-
 
 ```{r}
 #| echo: false
