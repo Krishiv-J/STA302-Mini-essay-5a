@@ -1,5 +1,5 @@
 ---
-title: "Prime Minister Tutorial"
+title: "Prime Minister Tutorial - Mini Essay 5a"
 author: "Krishiv Jain"
 thanks: "Code and data are available at: https://github.com/Krishiv-J/STA302-Mini-essay-5a.git"
 date: 2024-02-04
@@ -26,13 +26,24 @@ library(here)
 
 # Data Source
 
-The source of the data is Wikipedia. Wikipedia has a list of Prime Ministers for almost every nation, including India. This list includes a variety of metrics, such as their term in office, their political party, and the head of state during their term. Jawaharlal Nehru was the first and longest-serving prime minister. Indira Gandhi was the only woman to hold the position. Manmohan Singh was the first prime minister from a minority religion. The current prime minister is Narendra Modi. The data source can be used to learn about the history of the prime ministers of India. It can also be used to compare and contrast different prime ministers. Additionally, the data source can be used to study the trends in Indian politics. For our purpose, we are concerned with their lifespan. 
+The source of the data is Wikipedia, which has a list of Prime Ministers for almost every nation, including India. This list includes a variety of metrics, such as their term in office, their political party, and the head of state during their term. Jawaharlal Nehru was the first and longest-serving prime minister. Indira Gandhi was the only woman to hold the position. Manmohan Singh was the first prime minister from a minority religion. The current prime minister is Narendra Modi. The data source can be used to learn about the history of the prime ministers of India. Moreover, the data source can be used to study the trends in Indian politics. For our purpose, we are concerned with their lifespan. 
 
 # Data Gathering
 
 The data was downloaded, cleaned, and analyzed using the statistical programming language R [@citeR]. The following packages were also used: janitor [@citejanitor], here [@citehere], tidyverse [@citetidyverse], rvest [@citervest], xlm2 [@citex], dplyr [@citedplyr], tibble [@citetibble]. The majority of the code was from Telling Stories with Data [@citetextbook]. 
 
+Data on their life span was gathered. In the table on Wikipedia, the Prime Minister’s lifespan comes under their name. To gather the data, Wikipedia was webscraped. The read_html() function was used to download the data. Since we are only concerned with the table, SelectorGadget was used to help identify the necessary command to access the table, which was “.wikitable”, and this was then converted into a table within R. The data was then cleaned to remove unneeded information. The remaining data was of class “character”, which contained the Prime Minister’s name, and their year of birth and death in brackets. Thus, this was split based on the brackets, and the numbers were classified as the year they were born and the year they died respectively. The difference of the two variables was taken to calculate their age at death. 
 
+# Additional Information
+
+## What took longer than you expected?
+Extracting the relevant data after web scrapping the table took longer than expected. I thought that, once I had the data from Wikipedia, getting the specific information I wanted would be straight forward. However, figuring out exactly how to extract the data took much longer than I had expected. 
+
+## When did it become fun?
+I quite enjoyed seeing the ease with which I was able to web scrape a website such as Wikipedia. Through this method, I believe I can extract relevant data from numerous websites and use the data for my own analysis on a variety of topics. It was also fun once I had the clean data, and was able to use this data, for instance in creating the figure. 
+
+## What would you do differently next time you do this? 
+Next time, I would spend more time on planning the web scraping process and identifying the specific elements of the website that I need. Moreover, I might look into more advanced web scraping methods to improve the data extraction process and reduce the time spent on cleaning the data afterwards.
 
 
 ```{r}
@@ -52,7 +63,7 @@ final_data <-
 #| include: true
 #| message: false
 #| label: tbl-data
-#| tbl-cap: Sample of Cleaned Data
+#| tbl-cap: Cleaned Data
 
 #Based on: https://tellingstorieswithdata.com/05-static_communication.html#tables 
 final_data |>
@@ -85,7 +96,6 @@ final_data |>
   theme(legend.position = "bottom")
 ```
 
-The `echo: false` option disables the printing of code (only output is displayed).
 
 \newpage
 
