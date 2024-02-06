@@ -1,5 +1,5 @@
 ---
-title: "Prime Minister Tutorial - Mini Essay 5a"
+title: "Lifespan of Every Indian Prime Ministers"
 author: "Krishiv Jain"
 thanks: "Code and data are available at: https://github.com/Krishiv-J/STA302-Mini-essay-5a.git"
 date: 2024-02-04
